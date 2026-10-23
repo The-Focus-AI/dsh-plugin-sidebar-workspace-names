@@ -1,0 +1,3 @@
+- insert:
+    - id: sidebar-workspace-names
+      name: 'dsh-plugin-sidebar-workspace-names'

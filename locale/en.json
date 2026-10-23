@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Sidebar Workspace Names",
+    "description": "Shows the owning workspace name on a second line under each session title in the sidebar's In one list view."
+  }
+}

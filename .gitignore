@@ -1,0 +1,17 @@
+node_modules/
+out/
+dist/
+dist-installer/
+.agents
+agent/skills/
+.fnox/
+*.env
+*.env.local
+.pi/sessions/
+.pi/npm/
+.pi/git/
+.pi/skills/
+.DS_Store
+*.log
+*.tgz
+pnpm-debug.log*

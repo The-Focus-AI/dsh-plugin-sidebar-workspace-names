@@ -1,0 +1,53 @@
+[tools]
+node = "22"
+"npm:pnpm" = "latest"
+gh = "latest"
+ripgrep = "latest"
+fd = "latest"
+"npm:markdownlint-cli2" = "latest"
+"npm:skills" = "1.5.13"
+
+[tasks.setup]
+description = "First-time local setup"
+run = '''
+set -euo pipefail
+pnpm install
+'''
+
+[tasks.install]
+description = "Install dependencies and locked agent skills"
+run = '''
+set -euo pipefail
+pnpm install
+skills experimental_install
+'''
+
+[tasks.dev]
+description = "Run development checks"
+run = '''
+set -euo pipefail
+mise run lint
+mise run test
+'''
+
+[tasks.lint]
+description = "Lint markdown and check the JavaScript and JSON syntax"
+run = '''
+set -euo pipefail
+markdownlint-cli2 "**/*.md" "#node_modules" "#.pi" "#.agents"
+node --check client.js
+node --check index.js
+node -e 'for (const f of ["package.json", "locale/en.json", "locale/zh.json", ".pi/settings.json", "skills-lock.json"]) JSON.parse(require("fs").readFileSync(f, "utf8"))'
+'''
+
+[tasks.test]
+description = "Run the unit tests"
+run = "node --test"
+
+[tasks.deploy]
+description = "Verify the publishable tarball"
+run = "npm pack --dry-run"
+
+[tasks.publish]
+description = "Publish the package to npm"
+run = "npm publish --access public"
