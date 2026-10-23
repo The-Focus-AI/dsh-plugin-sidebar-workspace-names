@@ -29,10 +29,6 @@ under the title, and keeps the full, untruncated name in the row's hover card.
 - Hovering a row shows the full workspace name in the hover card, even when the
   second line had to truncate a long name.
 
-The two rows side by side, before and after:
-
-![Close-up of the session rows](docs/row-detail.png)
-
 ## Install
 
 From npm:
