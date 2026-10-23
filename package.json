@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-sidebar-workspace-names",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Shows the owning workspace name on a second line under each session title in the DeepSeek Harness sidebar's In one list view.",
   "type": "module",
   "license": "MIT",

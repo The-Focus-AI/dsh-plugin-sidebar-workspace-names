@@ -16,6 +16,8 @@ The flat session list mixes sessions from every workspace, so a title alone does
 say where the session lives. This plugin puts the owning workspace on a second line
 under the title, and keeps the full, untruncated name in the row's hover card.
 
+![Sidebar before and after enabling the plugin](docs/before-after.png)
+
 ## What you get
 
 - **In one list** (`View options → Group by → In one list`) renders each session as a
@@ -26,6 +28,10 @@ under the title, and keeps the full, untruncated name in the row's hover card.
   already name the workspace.
 - Hovering a row shows the full workspace name in the hover card, even when the
   second line had to truncate a long name.
+
+The two rows side by side, before and after:
+
+![Close-up of the session rows](docs/row-detail.png)
 
 ## Install
 
@@ -65,6 +71,9 @@ There is no build step and no runtime type stripping in the browser.
   (`[data-row-key="session:…"]`) and the always-mounted row action strip. That is a
   decoration contract, not a public API; `engines.dsh` pins the tested range, and a
   harness change should get a plugin version bump.
+- **The strip's own controls are hidden while the chip shows.** Because the chip shares
+  the strip with archive/pin, those buttons are suppressed on flat rows and come back on
+  hover; a harness change to the strip's markup can strand them visible.
 - **`:has()` is required** for the flat-view scoping (Chromium 105+, Safari 15.4+).
   Without it the chip simply stays hidden.
 - **Fixed two-line height.** Workspace names longer than the line ellipsize; the hover

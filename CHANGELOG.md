@@ -6,6 +6,18 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-23
+
+### Fixed
+
+- The row action strip's archive and pin buttons no longer stay visible on every flat
+  row. Sharing the strip with the chip forced it mounted; its buttons are now hidden
+  until the row is hovered, matching their shipped behavior.
+
+### Documentation
+
+- README shows before/after screenshots of the flat session list.
+
 ## [0.1.0] - 2026-10-23
 
 ### Added

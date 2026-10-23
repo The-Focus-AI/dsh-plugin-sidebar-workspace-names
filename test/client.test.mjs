@@ -59,6 +59,37 @@ test('tolerates a workspace view without a session list', () => {
   assert.equal(plugin.resolveName(items, 's1', t), 'ungrouped')
 })
 
+const cssRules = plugin.CSS.split('}')
+  .map((chunk) => chunk.trim())
+  .filter(Boolean)
+  .map((chunk) => chunk.slice(0, chunk.indexOf('{')).trim())
+
+test('hides the row action buttons that share the chip strip', () => {
+  const hidden = cssRules.find((selector) =>
+    /:has\(\.dsws-ws-chip\) > span:has\(\.dsws-ws-chip\) button$/.test(selector),
+  )
+  assert.ok(hidden, 'expected a rule hiding strip buttons on rows carrying the chip')
+  assert.match(plugin.CSS, /button \{ display: none; \}/)
+})
+
+test('restores the row action buttons on hover', () => {
+  const restore = cssRules.find((selector) =>
+    /:has\(\.dsws-ws-chip\):hover > span:has\(\.dsws-ws-chip\) button$/.test(selector),
+  )
+  assert.ok(restore, 'expected a rule restoring strip buttons on row hover')
+  assert.match(plugin.CSS, /button \{ display: inline-flex; \}/)
+})
+
+test('scopes every rule to the flat session list', () => {
+  const allowed = (selector) =>
+    selector.includes('[data-row-key^="session:"]') ||
+    selector.startsWith('.dsws-ws-') ||
+    selector.startsWith('div:has(> [data-row-key^="workspace:"])')
+
+  const unscoped = cssRules.filter((selector) => !allowed(selector))
+  assert.deepEqual(unscoped, [])
+})
+
 test('registers the chip and hover seats', () => {
   const registrations = []
   const ctx = {

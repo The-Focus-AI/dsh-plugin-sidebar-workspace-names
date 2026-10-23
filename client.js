@@ -25,8 +25,10 @@ window.__ModuleLoader__.load({
      * is hovered. It is the only always-mounted seat on a session row, so in
      * the flat ("In one list") view it carries the workspace chip: the row
      * grows to two lines, the title keeps the first line, and the chip is
-     * absolutely positioned below it, aligned with the title text. The strip's
-     * own buttons keep their shipped hover behavior on the first line. Grouped
+     * absolutely positioned below it, aligned with the title text. Because the
+     * chip shares the strip with the row's own controls, keeping the strip
+     * mounted would otherwise pin those controls on screen: they are hidden
+     * here and restored on hover, matching their shipped behavior. Grouped
      * views are untouched — their workspace headers already name the
      * workspace — and the flat-view selectors key off the row's parent, which
      * in the grouped tree is the Workspace section that also holds the
@@ -43,6 +45,8 @@ window.__ModuleLoader__.load({
 :not(div:has(> [data-row-key^="workspace:"])) > [data-row-key^="session:"] > span:has(.dsws-ws-chip) { display: inline-flex; }
 :not(div:has(> [data-row-key^="workspace:"])) > [data-row-key^="session:"] > span:has(.dsws-ws-chip) > :not(.dsws-ws-chip):not(:has(.dsws-ws-chip)) { display: none; }
 :not(div:has(> [data-row-key^="workspace:"])) > [data-row-key^="session:"]:hover > span:has(.dsws-ws-chip) > :not(.dsws-ws-chip):not(:has(.dsws-ws-chip)) { display: inline-flex; }
+:not(div:has(> [data-row-key^="workspace:"])) > [data-row-key^="session:"]:has(.dsws-ws-chip) > span:has(.dsws-ws-chip) button { display: none; }
+:not(div:has(> [data-row-key^="workspace:"])) > [data-row-key^="session:"]:has(.dsws-ws-chip):hover > span:has(.dsws-ws-chip) button { display: inline-flex; }
 div:has(> [data-row-key^="workspace:"]) .dsws-ws-chip { display: none !important; }
 :not(div:has(> [data-row-key^="workspace:"])) > [data-row-key^="session:"]:has(.dsws-ws-chip) .dsws-ws-chip {
   position: absolute;
@@ -188,6 +192,6 @@ div:has(> [data-row-key^="workspace:"]) .dsws-ws-chip { display: none !important
       )
     }
 
-    return { inject: ['slots', 'locale'], apply, resolveName }
+    return { inject: ['slots', 'locale'], apply, resolveName, CSS }
   },
 })
