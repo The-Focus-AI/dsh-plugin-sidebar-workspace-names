@@ -16,7 +16,7 @@ The flat session list mixes sessions from every workspace, so a title alone does
 say where the session lives. This plugin puts the owning workspace on a second line
 under the title, and keeps the full, untruncated name in the row's hover card.
 
-![Sidebar before and after enabling the plugin](docs/before-after.png)
+![Session rows before and after enabling the plugin](docs/before-after.png)
 
 ## What you get
 
