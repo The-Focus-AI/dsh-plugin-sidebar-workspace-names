@@ -17,3 +17,8 @@ All notable changes to this project are documented here. The format follows
 - Localized `en` and `zh` copy for Ungrouped, the automatic default workspace, and the
   hover-card label.
 - `engines.dsh` range pinning the tested harness version.
+
+### Changed
+
+- README leads with the npm install path; a checkout install is documented as the
+  alternative.

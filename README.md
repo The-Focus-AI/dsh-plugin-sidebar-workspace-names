@@ -2,7 +2,7 @@
 
 **See which workspace a session belongs to, without leaving the sidebar's _In one list_ view.**
 
-```
+```text
 ┌──────────────────────────────────┐
 │ Fix the sidebar labels        3h │
 │ 📁 claude-usage-esp32            │
@@ -29,21 +29,21 @@ under the title, and keeps the full, untruncated name in the row's hover card.
 
 ## Install
 
-From a checkout (no build step, no dependencies):
-
-```bash
-git clone https://github.com/The-Focus-AI/dsh-plugin-sidebar-workspace-names
-dsh plugin --profile desktop add ~/The-Focus-AI/dsh-plugin-sidebar-workspace-names
-```
-
-Once published to npm:
+From npm:
 
 ```bash
 dsh plugin --profile desktop add dsh-plugin-sidebar-workspace-names
 ```
 
-Or install the package from the Plugins page in the desktop app. Restart the profile
+You can also install it from the Plugins page in the desktop app. Restart the profile
 and refresh the page once.
+
+From a checkout instead (no build step, no dependencies):
+
+```bash
+git clone https://github.com/The-Focus-AI/dsh-plugin-sidebar-workspace-names
+dsh plugin --profile desktop add ~/The-Focus-AI/dsh-plugin-sidebar-workspace-names
+```
 
 ## How it works
 
