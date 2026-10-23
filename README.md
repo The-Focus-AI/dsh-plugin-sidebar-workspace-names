@@ -29,16 +29,17 @@ under the title, and keeps the full, untruncated name in the row's hover card.
 
 ## Install
 
-With the `dsh` CLI:
-
-```bash
-dsh plugin --profile desktop add dsh-plugin-sidebar-workspace-names
-```
-
 From a checkout (no build step, no dependencies):
 
 ```bash
-dsh plugin --profile desktop add ~/code/dsh-plugin-sidebar-workspace-names
+git clone https://github.com/The-Focus-AI/dsh-plugin-sidebar-workspace-names
+dsh plugin --profile desktop add ~/The-Focus-AI/dsh-plugin-sidebar-workspace-names
+```
+
+Once published to npm:
+
+```bash
+dsh plugin --profile desktop add dsh-plugin-sidebar-workspace-names
 ```
 
 Or install the package from the Plugins page in the desktop app. Restart the profile
